@@ -1,119 +1,207 @@
 # 🧮 Calculator Hub
 
-Красивое и функциональное веб-приложение с набором калькуляторов на FastAPI.
+A comprehensive web-based calculator application built with FastAPI, featuring multiple calculation tools in one beautiful interface.
 
-## ✨ Возможности
+![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.109-green.svg)
+![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-### 🔢 Математический калькулятор
-- Базовые арифметические операции
-- Тригонометрические функции (sin, cos, tan)
-- Логарифмы, степени, корни
-- Факториалы и модули
+## ✨ Features
 
-### 💰 Финансовый калькулятор
-- Расчет сложных процентов
-- Кредитный калькулятор (аннуитетные платежи)
-- Расчет ROI (возврат инвестиций)
-- Расчет НДС
+### 🔢 Mathematical Calculator
+- Basic operations: addition, subtraction, multiplication, division
+- Advanced functions: power, square root, logarithm
+- Trigonometric functions: sine, cosine, tangent (degrees/radians)
+- Factorial and percentage calculations
 
-### ❤️ Калькулятор здоровья
-- ИМТ (индекс массы тела)
-- BMR (базальный метаболизм)
-- Норма потребления воды
-- Расчет калорий для разных целей
+### 💰 Financial Calculator
+- **Discount Calculator** - Calculate discounted prices and savings
+- **Loan Calculator** - Monthly payments with amortization
+- **ROI Calculator** - Return on Investment analysis
+- **VAT Calculator** - Value Added Tax calculations (inclusive/exclusive)
+- **Compound Interest** - Investment growth projections
 
-### 🔄 Конвертер величин
-- Длина (метры, километры, мили, футы и др.)
-- Вес (кг, граммы, фунты, унции)
-- Температура (Цельсий, Фаренгейт, Кельвин)
-- Скорость (км/ч, м/с, мили/ч)
-- Объем данных (Байты, КБ, МБ, ГБ, ТБ)
+### ❤️ Health Calculator
+- **BMI Calculator** - Body Mass Index with health categories
+- **BMR Calculator** - Basal Metabolic Rate (Mifflin-St Jeor equation)
+- **Water Intake** - Daily hydration recommendations
+- **TDEE Calculator** - Total Daily Energy Expenditure with calorie goals
 
-## 🚀 Быстрый старт
+### 🔄 Unit Converter
+- Length (meter, kilometer, mile, yard, foot, inch, etc.)
+- Weight (kilogram, gram, pound, ounce, stone, ton, etc.)
+- Temperature (Celsius, Fahrenheit, Kelvin)
+- Speed (m/s, km/h, mph, knot, ft/s)
+- Data Storage (byte, KB, MB, GB, TB, PB, bits)
 
-### Вариант 1: Автоматическая установка (рекомендуется)
+### 📜 Additional Features
+- Calculation history with SQLite storage
+- Beautiful dark theme with smooth animations
+- Responsive design for all devices
+- RESTful API with automatic documentation
+- Exportable calculation history
 
+## 🚀 Quick Start
+
+### Prerequisites
+- Python 3.8 or higher
+- pip (Python package manager)
+
+### Installation & Running
+
+#### Option 1: Simple Run (Recommended)
 ```bash
-# Установка зависимостей
+# Install dependencies
 pip install -r requirements.txt
 
-# Запуск приложения
+# Run the application
 python run.py
 ```
 
-### Вариант 2: Через setup.py
-
+#### Option 2: Install as Package
 ```bash
-# Установка в режиме разработки
+# Install in development mode
 pip install -e .
 
-# Запуск приложения
+# Run using command
+calculator-hub
+
+# Or run directly
 python run.py
 ```
 
-### Вариант 3: Docker (если есть Dockerfile)
-
+#### Option 3: Docker
 ```bash
+# Using Docker Compose
+docker-compose up
+
+# Or using Docker directly
 docker build -t calculator-hub .
 docker run -p 8000:8000 calculator-hub
 ```
 
-## 🌐 Доступ
+### Access the Application
+- **Web Interface**: http://127.0.0.1:8000
+- **API Documentation**: http://127.0.0.1:8000/docs
+- **ReDoc Documentation**: http://127.0.0.1:8000/redoc
+- **Health Check**: http://127.0.0.1:8000/health
 
-После запуска откройте в браузере:
-**http://127.0.0.1:8000**
-
-## 📁 Структура проекта
+## 📁 Project Structure
 
 ```
 calculator-hub/
-├── run.py              # Основной файл приложения
-├── requirements.txt    # Зависимости Python
-├── setup.py           # Настройки пакета
-├── README.md          # Эта документация
-├── templates/         # HTML шаблоны
-│   └── index.html     # Главный шаблон
-└── calculators.db     # База данных (создается автоматически)
+├── app/
+│   ├── __init__.py          # Package initialization
+│   ├── main.py              # FastAPI application entry point
+│   ├── api/
+│   │   ├── __init__.py      # API module init
+│   │   ├── routes.py        # Calculator API endpoints
+│   │   ├── history_routes.py # History management endpoints
+│   │   └── database.py      # SQLite database operations
+│   ├── calculators/
+│   │   ├── __init__.py      # Calculators module init
+│   │   ├── math_ops.py      # Mathematical operations
+│   │   ├── finance_ops.py   # Financial calculations
+│   │   ├── health_ops.py    # Health calculations
+│   │   └── converter_ops.py # Unit conversion logic
+│   ├── static/
+│   │   ├── css/
+│   │   │   └── styles.css   # Application styles
+│   │   └── js/
+│   │       └── app.js       # Frontend JavaScript
+│   └── templates/
+│       └── index.html       # Main HTML template
+├── run.py                   # Simple launch script
+├── requirements.txt         # Python dependencies
+├── setup.py                 # Package setup script
+├── README.md                # This file
+├── LICENSE                  # MIT License
+├── .gitignore              # Git ignore rules
+├── Dockerfile              # Docker image configuration
+└── docker-compose.yml      # Docker Compose configuration
 ```
 
-## ⚙️ Конфигурация
+## 🛠️ Technology Stack
 
-Приложение запускается с настройками по умолчанию:
-- **Хост:** 127.0.0.1
-- **Порт:** 8000
-- **Режим отладки:** Выключен
+- **Backend**: FastAPI (Python 3.8+)
+- **Frontend**: Vanilla JavaScript, CSS3, HTML5
+- **Database**: SQLite (file-based, no setup required)
+- **Styling**: Custom CSS with CSS Variables
+- **API**: RESTful with OpenAPI/Swagger documentation
 
-Для изменения настроек отредактируйте `run.py` или передайте аргументы командной строки:
+## 📖 API Usage
+
+### Example: Calculate BMI
 
 ```bash
-python run.py --host 0.0.0.0 --port 8080 --debug
+curl -X POST "http://127.0.0.1:8000/api/health/bmi" \
+  -H "Content-Type: application/json" \
+  -d '{"weight_kg": 70, "height_cm": 175}'
 ```
 
-## 💾 Хранение данных
+### Example: Convert Units
 
-Все расчеты сохраняются в локальную SQLite базу данных `calculators.db`. 
-База создается автоматически при первом запуске.
+```bash
+curl -X POST "http://127.0.0.1:8000/api/converter/convert" \
+  -H "Content-Type: application/json" \
+  -d '{"value": 100, "category": "length", "from_unit": "meter", "to_unit": "foot"}'
+```
 
-## 🛠 Технологии
+### Example: Get Calculation History
 
-- **Backend:** FastAPI, Uvicorn
-- **Frontend:** HTML5, CSS3, JavaScript (Vanilla)
-- **База данных:** SQLite
-- **Стили:** Кастомный CSS с анимациями
-- **Иконки:** Unicode символы
+```bash
+curl "http://127.0.0.1:8000/api/history"
+```
 
-## 🎨 Особенности дизайна
+See full API documentation at http://127.0.0.1:8000/docs
 
-- Современный темный интерфейс с градиентами
-- Плавные анимации переходов между вкладками
-- Адаптивный дизайн для мобильных устройств
-- Интуитивная навигация
-- История расчетов с возможностью очистки
+## ⚙️ Configuration
 
-## 📝 Лицензия
+The application runs with sensible defaults:
 
-MIT License - используйте свободно!
+| Setting | Default | Description |
+|---------|---------|-------------|
+| Host | 0.0.0.0 | Server binding address |
+| Port | 8000 | Server port |
+| Database | calculators.db | SQLite database file |
+| Reload | True | Auto-reload on code changes |
+
+To customize, edit `app/main.py` and modify the `uvicorn.run()` parameters.
+
+## 🧪 Testing
+
+```bash
+# Test the API endpoints manually via the web interface
+# or use the Swagger UI at /docs
+
+# Check health status
+curl http://127.0.0.1:8000/health
+```
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 🙏 Acknowledgments
+
+- Built with [FastAPI](https://fastapi.tiangolo.com/)
+- Icons and design inspired by modern web applications
+- Calculation formulas based on standard mathematical and scientific references
+
+## 📧 Support
+
+For issues and questions, please open an issue on the GitHub repository.
 
 ---
 
-**Сделано с ❤️ на FastAPI**
+Made with ❤️ using FastAPI

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator Hub - Your All-in-One Calculator</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">🧮</span>
+                    <h1>Calculator Hub</h1>
+                </div>
+                <p class="tagline">Your all-in-one calculation solution</p>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="tabs-navigation">
+            <button class="tab-btn active" data-tab="math">
+                <span class="tab-icon">📐</span>
+                <span>Math</span>
+            </button>
+            <button class="tab-btn" data-tab="finance">
+                <span class="tab-icon">💰</span>
+                <span>Finance</span>
+            </button>
+            <button class="tab-btn" data-tab="health">
+                <span class="tab-icon">❤️</span>
+                <span>Health</span>
+            </button>
+            <button class="tab-btn" data-tab="converter">
+                <span class="tab-icon">🔄</span>
+                <span>Converter</span>
+            </button>
+            <button class="tab-btn" data-tab="history">
+                <span class="tab-icon">📜</span>
+                <span>History</span>
+            </button>
+            <button class="tab-btn" data-tab="about">
+                <span class="tab-icon">ℹ️</span>
+                <span>About</span>
+            </button>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            
+            <!-- Math Calculator -->
+            <section id="math" class="tab-content active">
+                <h2>Mathematical Calculator</h2>
+                <div class="calculator-grid">
+                    <div class="calc-card">
+                        <h3>Basic Operations</h3>
+                        <div class="input-group">
+                            <input type="number" id="math-a" placeholder="First number" step="any">
+                            <select id="math-operation">
+                                <option value="add">+ Add</option>
+                                <option value="subtract">− Subtract</option>
+                                <option value="multiply">×</ Multiply</option>
+                                <option value="divide">÷ Divide</option>
+                                <option value="power">x^y Power</option>
+                            </select>
+                            <input type="number" id="math-b" placeholder="Second number" step="any">
+                        </div>
+                        <button class="btn-primary" onclick="calculateMath()">Calculate</button>
+                        <div class="result-box" id="math-result"></div>
+                    </div>
+
+                    <div class="calc-card">
+                        <h3>Advanced Functions</h3>
+                        <div class="input-group">
+                            <select id="adv-operation">
+                                <option value="sqrt">√ Square Root</option>
+                                <option value="log">log Logarithm</option>
+                                <option value="sin">sin Sine</option>
+                                <option value="cos">cos Cosine</option>
+                                <option value="tan">tan Tangent</option>
+                                <option value="factorial">n! Factorial</option>
+                            </select>
+                            <input type="number" id="adv-value" placeholder="Value" step="any">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="degrees-checkbox"> Degrees
+                            </label>
+                        </div>
+                        <button class="btn-primary" onclick="calculateAdvanced()">Calculate</button>
+                        <div class="result-box" id="adv-result"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Finance Calculator -->
+            <section id="finance" class="tab-content">
+                <h2>Financial Calculator</h2>
+                <div class="calculator-grid">
+                    <div class="calc-card">
+                        <h3>Discount Calculator</h3>
+                        <div class="input-group">
+                            <input type="number" id="discount-price" placeholder="Original Price" step="any">
+                            <input type="number" id="discount-percent" placeholder="Discount %" step="any">
+                        </div>
+                        <button class="btn-primary" onclick="calculateDiscount()">Calculate</button>
+                        <div class="result-box" id="discount-result"></div>
+                    </div>
+
+                    <div class="calc-card">
+                        <h3>Loan Calculator</h3>
+                        <div class="input-group">
+                            <input type="number" id="loan-principal" placeholder="Loan Amount" step="any">
+                            <input type="number" id="loan-rate" placeholder="Annual Interest Rate %" step="any">
+                            <input type="number" id="loan-years" placeholder="Years" step="1">
+                        </div>
+                        <button class="btn-primary" onclick="calculateLoan()">Calculate</button>
+                        <div class="result-box" id="loan-result"></div>
+                    </div>
+
+                    <div class="calc-card">
+                        <h3>ROI Calculator</h3>
+                        <div class="input-group">
+                            <input type="number" id="roi-investment" placeholder="Investment Amount" step="any">
+                            <input type="number" id="roi-return" placeholder="Return Value" step="any">
+                        </div>
+                        <button class="btn-primary" onclick="calculateROI()">Calculate</button>
+                        <div class="result-box" id="roi-result"></div>
+                    </div>
+
+                    <div class="calc-card">
+                        <h3>VAT Calculator</h3>
+                        <div class="input-group">
+                            <input type="number" id="vat-amount" placeholder="Amount" step="any">
+                            <input type="number" id="vat-rate" placeholder="VAT Rate %" step="any">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="vat-inclusive"> VAT Included
+                            </label>
+                        </div>
+                        <button class="btn-primary" onclick="calculateVAT()">Calculate</button>
+                        <div class="result-box" id="vat-result"></div>
+                    </div>
+
+                    <div class="calc-card full-width">
+                        <h3>Compound Interest</h3>
+                        <div class="input-group">
+                            <input type="number" id="ci-principal" placeholder="Principal" step="any">
+                            <input type="number" id="ci-rate" placeholder="Annual Rate %" step="any">
+                            <input type="number" id="ci-years" placeholder="Years" step="1">
+                            <input type="number" id="ci-compounds" placeholder="Compounds/Year" value="12" step="1">
+                        </div>
+                        <button class="btn-primary" onclick="calculateCompoundInterest()">Calculate</button>
+                        <div class="result-box" id="ci-result"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Health Calculator -->
+            <section id="health" class="tab-content">
+                <h2>Health Calculator</h2>
+                <div class="calculator-grid">
+                    <div class="calc-card">
+                        <h3>BMI Calculator</h3>
+                        <div class="input-group">
+                            <input type="number" id="bmi-weight" placeholder="Weight (kg)" step="any">
+                            <input type="number" id="bmi-height" placeholder="Height (cm)" step="any">
+                        </div>
+                        <button class="btn-primary" onclick="calculateBMI()">Calculate</button>
+                        <div class="result-box" id="bmi-result"></div>
+                    </div>
+
+                    <div class="calc-card">
+                        <h3>BMR Calculator</h3>
+                        <div class="input-group">
+                            <input type="number" id="bmr-weight" placeholder="Weight (kg)" step="any">
+                            <input type="number" id="bmr-height" placeholder="Height (cm)" step="any">
+                            <input type="number" id="bmr-age" placeholder="Age" step="1">
+                            <select id="bmr-gender">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+                        <button class="btn-primary" onclick="calculateBMR()">Calculate</button>
+                        <div class="result-box" id="bmr-result"></div>
+                    </div>
+
+                    <div class="calc-card">
+                        <h3>Daily Water Intake</h3>
+                        <div class="input-group">
+                            <input type="number" id="water-weight" placeholder="Weight (kg)" step="any">
+                            <input type="number" id="water-activity" placeholder="Activity (min/day)" step="1">
+                            <select id="water-climate">
+                                <option value="normal">Normal Climate</option>
+                                <option value="hot">Hot Climate</option>
+                                <option value="cold">Cold Climate</option>
+                            </select>
+                        </div>
+                        <button class="btn-primary" onclick="calculateWaterIntake()">Calculate</button>
+                        <div class="result-box" id="water-result"></div>
+                    </div>
+
+                    <div class="calc-card full-width">
+                        <h3>TDEE Calculator</h3>
+                        <div class="input-group">
+                            <input type="number" id="tdee-weight" placeholder="Weight (kg)" step="any">
+                            <input type="number" id="tdee-height" placeholder="Height (cm)" step="any">
+                            <input type="number" id="tdee-age" placeholder="Age" step="1">
+                            <select id="tdee-gender">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                            <select id="tdee-activity">
+                                <option value="sedentary">Sedentary</option>
+                                <option value="lightly_active">Lightly Active</option>
+                                <option value="moderately_active">Moderately Active</option>
+                                <option value="very_active">Very Active</option>
+                                <option value="extra_active">Extra Active</option>
+                            </select>
+                        </div>
+                        <button class="btn-primary" onclick="calculateTDEE()">Calculate</button>
+                        <div class="result-box" id="tdee-result"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Unit Converter -->
+            <section id="converter" class="tab-content">
+                <h2>Unit Converter</h2>
+                <div class="converter-container">
+                    <div class="calc-card">
+                        <div class="input-group">
+                            <select id="conv-category" onchange="updateUnitOptions()">
+                                <option value="length">Length</option>
+                                <option value="weight">Weight</option>
+                                <option value="temperature">Temperature</option>
+                                <option value="speed">Speed</option>
+                                <option value="data">Data Storage</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <input type="number" id="conv-value" placeholder="Value" step="any">
+                            <select id="conv-from"></select>
+                            <span class="arrow">→</span>
+                            <select id="conv-to"></select>
+                        </div>
+                        <button class="btn-primary" onclick="convertUnits()">Convert</button>
+                        <div class="result-box" id="conv-result"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- History -->
+            <section id="history" class="tab-content">
+                <h2>Calculation History</h2>
+                <div class="history-controls">
+                    <button class="btn-secondary" onclick="loadHistory()">Refresh</button>
+                    <button class="btn-danger" onclick="clearHistory()">Clear All</button>
+                </div>
+                <div class="history-list" id="history-list">
+                    <p class="empty-state">No calculations yet. Start calculating!</p>
+                </div>
+            </section>
+
+            <!-- About -->
+            <section id="about" class="tab-content">
+                <h2>About Calculator Hub</h2>
+                <div class="about-content">
+                    <div class="about-card">
+                        <h3>🎯 What is this?</h3>
+                        <p>Calculator Hub is a comprehensive web-based calculator application that provides multiple calculation tools in one place.</p>
+                    </div>
+                    <div class="about-card">
+                        <h3>✨ Features</h3>
+                        <ul>
+                            <li><strong>Mathematical Calculator:</strong> Basic and advanced math operations</li>
+                            <li><strong>Financial Calculator:</strong> Loans, discounts, ROI, VAT, compound interest</li>
+                            <li><strong>Health Calculator:</strong> BMI, BMR, water intake, TDEE</li>
+                            <li><strong>Unit Converter:</strong> Length, weight, temperature, speed, data</li>
+                            <li><strong>History:</strong> Track your calculations with SQLite storage</li>
+                        </ul>
+                    </div>
+                    <div class="about-card">
+                        <h3>🛠️ Technology Stack</h3>
+                        <ul>
+                            <li><strong>Backend:</strong> FastAPI (Python)</li>
+                            <li><strong>Frontend:</strong> Vanilla JavaScript, CSS3</li>
+                            <li><strong>Database:</strong> SQLite (file-based)</li>
+                            <li><strong>Design:</strong> Modern dark theme with animations</li>
+                        </ul>
+                    </div>
+                    <div class="about-card">
+                        <h3>📄 License</h3>
+                        <p>This project is licensed under the MIT License.</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Calculator Hub. Built with ❤️ using FastAPI</p>
+        </footer>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
