@@ -1,65 +1,49 @@
-```
-# Python
-__pycache__/
+```gitignore
+# Compiled and binary files
 *.pyc
-*.pyo
-*.pyd
-.Python
-env/
+__pycache__/
+*.o
+*.obj
+*.so
+*.dll
+*.exe
+*.class
+
+# Dependencies
 venv/
 .venv/
-.ENV
-.python-version
-pip-log.txt
-pip-delete-this-directory.txt
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.log
-.git/modules/
-*.sublime-workspace
-.pytest_cache/
-.hypothesis/
-.DS_Store
-Thumbs.db
-
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# IDE
-.vscode/
-.idea/
-
-# Environment
 .env
 .env.local
 *.env.*
 
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
+# Build artifacts
+dist/
+build/
+target/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
+*.swo
+
+# Editor/IDE files
+.vscode/
+.idea/
+*.pyc
+__pycache__/
+
+# Coverage reports
+coverage/
+htmlcov/
+.coverage
+
+# Python specific
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.Python
+*.so
+.PyInstaller/
 ```
