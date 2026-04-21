@@ -1,3 +1,9 @@
+#!/usr/bin/env python3
+"""
+Calculator Hub - Setup Script
+Install with: pip install -e .
+"""
+
 from setuptools import setup, find_packages
 
 with open("README.md", "r", encoding="utf-8") as fh:
@@ -9,8 +15,8 @@ with open("requirements.txt", "r", encoding="utf-8") as fh:
 setup(
     name="calculator-hub",
     version="1.0.0",
-    author="Developer",
-    description="Красивое веб-приложение с набором калькуляторов на FastAPI",
+    author="Calculator Hub Team",
+    description="A comprehensive web-based calculator application with multiple calculation tools",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/yourusername/calculator-hub",
@@ -18,7 +24,7 @@ setup(
     classifiers=[
         "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
-        "Topic :: Software Development :: Build Tools",
+        "Topic :: Software Development :: Libraries :: Python Modules",
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.8",
@@ -31,11 +37,15 @@ setup(
     install_requires=requirements,
     entry_points={
         "console_scripts": [
-            "calculator-hub=run:main",
+            "calculator-hub=app.main:main",
         ],
     },
     include_package_data=True,
     package_data={
-        "templates": ["*.html"],
+        "app": [
+            "templates/*.html",
+            "static/css/*.css",
+            "static/js/*.js",
+        ],
     },
 )
